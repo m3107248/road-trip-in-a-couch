@@ -1,0 +1,20 @@
+{
+  "name": "v1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "parcel app/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.7.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^1.35.5",
+    "dotenv": "^16.0.1"
+  }
+}

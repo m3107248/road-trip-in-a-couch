@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Unna:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  </head>
+  <body>
+    <h1 id="site-logo" class="mini display">ROAD TRIP IN A COUCH</h1>
+    <main>
+      <div id="shadow"></div>
+      <header class="display">
+        <nav id="main-nav">
+          <div
+            id="menu-icon"
+            class="nav-level-0 nav-level nav-ul hide"
+            data-nav-dest=""
+          >
+            <div class="bar"></div>
+            <div class="bar"></div>
+            Menu
+          </div>
+          <ul id="nav-back-container">
+            <li
+              id="nav-back-btn"
+              class="text-right hide"
+              data-current-nav-level="0"
+              data-prev-nav-level="0"
+              data-page-value=""
+              data-page-recipe=""
+            >
+              Back
+            </li>
+            <li id="nav-fav-btn" class="text-right hide" data-recipe-id="">
+              Favorite
+            </li>
+          </ul>
+          <ul class="nav-level-1 nav-level nav-ul hide">
+            <li
+              id="search"
+              class="nav-item has-page"
+              data-nav-level="1"
+              data-nav-dest="page-search"
+            >
+              Search
+            </li>
+            <li
+              id="favorite"
+              class="nav-item has-page"
+              data-nav-level="1"
+              data-nav-dest="page-favorite"
+            >
+              Favorite
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <div id="page-login" class="page">
+        <div class="grid-container">
+          <div class="grid-x align-center">
+            <div class="large-10 medium-12 small-12 cell text-center">
+              <h1>ROAD TRIP IN A COUCH</h1>
+              <h4>A cocktail recipe book that takes you to Bora Bora.</h4>
+            </div>
+            <div class="large-10 medium-10 small-12 cell">
+              <form class="grid-x grid-padding-x">
+                <div class="large-6 medium-6 small-12 cell">
+                  <input
+                    name="username"
+                    type="text"
+                    id="username-input"
+                    placeholder="Username"
+                  />
+                </div>
+                <div class="large-6 medium-6 small-12 cell">
+                  <input
+                    name="password"
+                    type="password"
+                    id="passwd-input"
+                    placeholder="Password"
+                  />
+                </div>
+                <div class="large-12 medium-12 small-12 cell text-center">
+                  <button id="supbase-signin">Login</button>
+                </div>
+                <div class="large-12 medium-12 small-12 cell text-center">
+                  <p>
+                    Don’t have an account?
+                    <a id="supbase-signup">Sign Up Now</a>
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="page-search" class="page nav-level-2 hide">
+        <div class="grid-container align-right">
+          <div class="grid-x align-right">
+            <div class="large-8 medium-8 small-12 cell text-right">
+              <form>
+                <input
+                  name="search input"
+                  class="text-right"
+                  type="text"
+                  id="cocktail-search"
+                  placeholder="Find a Cocktail"
+                />
+                <div class="grid-x align-right">
+                  <div class="large-8 medium-8 small-12 cell text-right">
+                    <div class="switch-container">
+                      <button
+                        class="search-by-btn btn-style-switch width-half text-center active"
+                        data-searchby="name"
+                        data-switchid="search-type"
+                        data-switchstatus="on"
+                      >
+                        Name
+                      </button>
+                      <button
+                        class="search-by-btn btn-style-switch width-half text-center"
+                        data-searchby="ingredient"
+                        data-switchid="search-type"
+                        data-switchstatus="off"
+                      >
+                        Ingredient
+                      </button>
+                      <div
+                        class="btn-bg width-half switch-on"
+                        data-switchid="search-type"
+                      ></div>
+                    </div>
+                  </div>
+                  <div
+                    class="large-12 medium-12 small-12 cell text-right margin-t-10 margin-b-30"
+                  >
+                    <button
+                      name="search button"
+                      id="cocktail-search-btn"
+                      class="has-page"
+                      data-nav-dest="page-search-result"
+                    >
+                      Search
+                    </button>
+                  </div>
+                  <div
+                    class="large-12 medium-12 small-12 cell text-right margin-b-0 margin-t-30"
+                  >
+                    <p class="margin-b-10">Can’t think of a name?</p>
+                  </div>
+                  <div
+                    class="large-12 medium-12 small-12 cell text-right margin-t-0"
+                  >
+                    <button
+                      name="cocktail list button"
+                      id="cocktail-list-btn"
+                      class="has-page"
+                      data-nav-dest="page-search-result"
+                    >
+                      Give Me One
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="page-favorite" class="page nav-level-2 hide">
+        <div class="grid-container align-right">
+          <div class="grid-x align-right">
+            <div class="large-8 medium-8 small-12 cell text-right">
+              <div id="fav-list-container" class="grid-x align-right"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="page-fav-recipe-detail" class="page nav-level-3 hide">
+        <div class="grid-container align-left">
+          <div class="grid-x align-left">
+            <div class="large-12 medium-12 small-12 cell text-left">
+              <div
+                id="fav-recipe-display-container"
+                class="grid-x align-left"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="page-search-result" class="page nav-level-3 hide">
+        <div class="grid-container align-right">
+          <div class="grid-x align-right">
+            <div class="large-8 medium-8 small-12 cell text-right">
+              <div
+                id="result-display-container"
+                class="grid-x align-right"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="page-recipe-detail" class="page nav-level-4 hide">
+        <div class="grid-container align-left">
+          <div class="grid-x align-left">
+            <div class="large-12 medium-12 small-12 cell text-left">
+              <div
+                id="recipe-display-container"
+                class="grid-x align-left"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="main.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,435 @@
+html {
+  /*color:#C29A62;*/
+  color: #d6a767;
+}
+
+body {
+  /* background-color: #1D253D; */
+  font-family: "Philosopher", Helvetica, Arial, sans-serif;
+  background-color: #1e2641;
+  max-width: 100%;
+  display: block;
+  position: relative;
+  padding: 50px;
+  overflow-y: scroll;
+}
+main {
+  /* box-shadow: inset 0px 22px 66px 0px rgba(3,7,16,1); */
+  min-height: 600px;
+  height: calc(100vh - 120px);
+  border-radius: 55px;
+  overflow: hidden;
+  position: relative;
+  padding: 0px 30px;
+}
+#shadow {
+  box-shadow: inset 0px 22px 66px 0px rgba(3, 7, 16, 1);
+  min-height: 100%;
+  min-width: 100%;
+  border-radius: 55px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* TYPOGRAPHY START */
+h1 {
+  font-family: "Unna", serif;
+  font-weight: 400;
+  font-size: 5rem;
+  letter-spacing: 1.9px;
+  line-height: 5rem;
+  color: #d6a767;
+  margin: 0;
+  margin-bottom: 50px;
+}
+h1#site-logo.mini {
+  font-size: 22px;
+  color: #111428;
+  letter-spacing: 0.8px;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  display: block;
+  width: 100%;
+  transform: translateY(-40px);
+}
+h3,
+button {
+  font-family: "Unna", serif;
+  font-weight: 400;
+  font-size: 2.5rem;
+  letter-spacing: 0.95px;
+  line-height: 2.5rem;
+}
+h4 {
+  font-family: "Philosopher", Helvetica, Arial, sans-serif;
+  font-size: 1.88rem;
+  font-weight: 200;
+  letter-spacing: 1.3px;
+  line-height: 2.4rem;
+  color: #5f6182;
+}
+.cocktail-recipe-db h4 {
+  color: #d6a767;
+}
+p,
+input,
+li,
+a,
+select {
+  font-family: "Philosopher", Helvetica, Arial, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 200;
+  letter-spacing: 0.9px;
+  line-height: 2rem;
+  color: #5f6182;
+}
+input,
+select {
+  background-color: unset !important;
+  border: unset !important;
+  border-bottom: solid 1px #5f6182 !important;
+  box-shadow: unset !important;
+  padding: 10px 10px 10px 10px !important;
+  font-weight: 400 !important;
+  font-size: 2.5rem !important;
+  letter-spacing: 0.95px !important;
+  line-height: 2.5rem !important;
+  color: #5f6182 !important;
+}
+input:focus {
+  box-shadow: unset !important;
+  border-bottom: solid 1px #d6a767 !important;
+  color: #d6a767 !important;
+}
+input::placeholder {
+  color: #5f6182 !important;
+}
+button {
+  cursor: pointer;
+  color: #d6a767;
+}
+button::after {
+  content: "";
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  position: relative;
+  border-top: solid 1px #d6a767;
+  border-right: solid 1px #d6a767;
+  transform: rotate(45deg) translate(-4px, 2px);
+  margin-left: 8px;
+}
+button:hover {
+  color: #111428;
+  letter-spacing: 2.5px;
+  transition: 0.2s ease;
+}
+button:hover::after {
+  border-top: solid 1px #111428;
+  border-right: solid 1px #111428;
+  margin-left: 10px;
+  transition: 0.2s ease;
+}
+a {
+  text-decoration: underline;
+}
+a:hover {
+  color: #111428;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+/* TYPOGRAPHY END */
+
+/* NAV START */
+nav {
+  font-family: "Unna", serif;
+  margin-top: 0;
+  margin-bottom: 50px;
+  font-size: 42px;
+  letter-spacing: 1px;
+  line-height: 1rem;
+  font-weight: 400;
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 20px;
+  text-align: center;
+  cursor: default;
+  z-index: 3;
+}
+#menu-icon {
+  cursor: pointer;
+}
+nav .bar {
+  width: 100px;
+  height: 1px;
+  background-color: #d6a767;
+  margin-bottom: 25px;
+}
+#menu-icon:hover div:first-child {
+  width: 150px;
+  transform: translateX(20px);
+  transition: 0.35s ease;
+}
+#menu-icon:hover div:nth-child(2) {
+  width: 150px;
+  transform: translateX(80px);
+  transition: 0.4s ease;
+}
+#menu-icon:hover div {
+  letter-spacing: 6px;
+  transform: translateX(20px);
+  transition: 0.2s ease;
+}
+nav#main-nav ul {
+  list-style-type: none;
+  display: inline-block;
+  position: relative;
+}
+nav ul li {
+  display: block;
+  text-align: right;
+}
+nav ul.nav-ul {
+  margin-top: 60px;
+}
+#nav-back-btn,
+#nav-fav-btn {
+  font-family: "Unna", serif;
+  font-weight: 400;
+  font-size: 2.5rem;
+  letter-spacing: 0.95px;
+  line-height: 2.5rem;
+  /* margin-bottom: 60px; */
+  color: #5f6182;
+  display: block;
+  cursor: pointer;
+}
+#nav-fav-btn {
+  margin-top: 20px;
+}
+.btn-activate {
+  color: #d6a767 !important;
+  transition: 0.2s ease;
+}
+#nav-back-btn::after,
+#nav-fav-btn::after {
+  display: none;
+  margin: 0;
+}
+#nav-back-btn::before {
+  content: "";
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  position: relative;
+  border-bottom: solid 1px #5f6182;
+  border-left: solid 1px #5f6182;
+  transform: rotate(45deg) translate(-4px, 2px);
+}
+#nav-back-btn:hover,
+.nav-item:hover,
+#nav-fav-btn:hover {
+  color: #111428;
+  letter-spacing: 2.5px;
+  transition: 0.2s ease;
+}
+#nav-back-btn:hover::before {
+  border-bottom: solid 1px #111428;
+  border-left: solid 1px #111428;
+  margin-right: 10px;
+  transition: 0.2s ease;
+}
+.nav-item {
+  font-family: "Unna", serif;
+  font-weight: 400;
+  font-size: 2.5rem;
+  letter-spacing: 0.95px;
+  line-height: 2.5rem;
+  cursor: pointer;
+  color: #d6a767;
+  margin-bottom: 30px;
+}
+nav#main-nav #nav-back-container {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+/* NAV END */
+
+/* BUTTON STYLE FILTER START*/
+.switch-container {
+  background: #0a0f1e;
+  padding: 10px 20px;
+  border-radius: 50px;
+  display: inline-flex;
+  justify-content: space-evenly;
+  width: 100%;
+  position: relative;
+}
+.btn-style-switch:after {
+  display: none;
+}
+.btn-style-switch {
+  font-family: "Philosopher", Helvetica, Arial, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 200;
+  letter-spacing: 0.9px;
+  line-height: 1.5rem;
+  color: #5f6182;
+  padding: 5px 20px;
+  z-index: 1;
+}
+.btn-style-switch.active {
+  color: #686ed1;
+}
+.btn-style-switch:hover {
+  letter-spacing: 0.9px;
+  color: #686ed1;
+  transition: 0.2s ease;
+}
+.switch-container .btn-bg {
+  min-height: 78%;
+  display: inline-block;
+  position: absolute;
+  z-index: 0;
+  background: #131a2e;
+  box-shadow: inset 0px 1px 30px 0px rgba(63, 57, 184, 0.5);
+  border-radius: 50px;
+}
+.switch-container .btn-bg.switch-on {
+  right: calc(50% - 6px);
+  top: 6px;
+  transition: 0.3s ease;
+}
+.switch-container .btn-bg.switch-off {
+  right: 6px;
+  top: 6px;
+  transition: 0.3s ease;
+}
+/* BUTTON STYLE FILTER END */
+
+/* LAYOUT START */
+.hide {
+  display: none;
+}
+.display {
+  display: block;
+}
+.grid-container {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+.align-right {
+  justify-self: end;
+}
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.width-half {
+  width: 50%;
+}
+.margin-t-0 {
+  margin-top: 0;
+}
+.margin-b-0 {
+  margin-bottom: 0;
+}
+.margin-t-10 {
+  margin-top: 10;
+}
+.margin-b-10 {
+  margin-bottom: 10;
+}
+.margin-t-30 {
+  margin-top: 30;
+}
+.margin-b-30 {
+  margin-bottom: 30;
+}
+/* LAYOUT END */
+
+/* LOGIN PAGE START */
+.page {
+  /* #page-login { */
+  height: 100%;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+}
+#page-login h1 {
+  margin-bottom: 15px;
+}
+#page-login form {
+  margin-top: 150px;
+}
+#supbase-signin {
+  margin-top: 30px;
+  margin-bottom: 5px;
+}
+/* LOGIN PAGE END */
+
+/* SEARCH START */
+#page-search-result,
+#page-recipe-detail,
+#page-favorite,
+#page-fav-recipe-detail {
+  padding-top: 150px;
+  padding-bottom: 150px;
+  align-items: flex-start;
+}
+.result-item {
+  padding: 3px;
+  cursor: pointer;
+}
+.result-item > div {
+  background: rgb(71, 73, 121);
+  background: linear-gradient(
+    90deg,
+    rgba(71, 73, 121, 0.7) 0%,
+    rgba(48, 46, 105, 0.5) 100%
+  );
+  padding: 5px 10px 1px 15px;
+  border-radius: 5px;
+  height: 100%;
+}
+.result-item h4 {
+  color: #07112d;
+  letter-spacing: 0.5px;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+}
+.result-item:hover > div {
+  background: linear-gradient(
+    90deg,
+    rgba(89, 71, 121, 0) 0%,
+    rgba(88, 46, 105, 0.3) 100%
+  );
+}
+.result-item:hover h4 {
+  color: #686ed1;
+  transition: 0.2s ease;
+}
+.method {
+  margin-top: 40px;
+  font-size: 1.3rem;
+  line-height: 2rem;
+}
+.drinkware {
+  margin-top: 0;
+}
+/* SEARCH END */
