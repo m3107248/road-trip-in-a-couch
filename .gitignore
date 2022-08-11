@@ -1,0 +1,6 @@
+.env
+dist
+node_modules
+.parcel-cache
+01 - Design
+.DS_Store
