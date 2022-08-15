@@ -447,7 +447,9 @@ nav#main-nav #nav-back-container {
   min-height: 600px;
   height: calc(100vh - 120px);
   width: calc(100vw - 100px);
-  background: linear-gradient(140deg, #24221f 5%, #0a0d18 61%);
+  background: linear-gradient(140deg, #2d2a25 0%, #24221f 5%, #0a0d18 50%);
+  background-size: 150% 150%;
+  animation: moonLightPulse 10s ease infinite;
   z-index: -3;
 }
 #bg-img .bg-img-container {
@@ -469,11 +471,40 @@ nav#main-nav #nav-back-container {
   bottom: -5.5%;
   z-index: -2;
 }
+.bg-left.left2 {
+  left: 22%;
+  z-index: -3;
+  width: 20vw;
+  opacity: 0.4;
+  min-width: unset;
+  filter: blur(0.5px);
+  mix-blend-mode: difference;
+}
 .bg-right {
   min-width: 500px;
   width: 45vw;
   bottom: -4.5%;
   right: -15%;
   z-index: -2;
+}
+.bg-right.right2 {
+  right: 22%;
+  z-index: -3;
+  width: 20vw;
+  opacity: 0.4;
+  min-width: unset;
+  filter: blur(0.5px);
+  mix-blend-mode: difference;
+}
+@keyframes moonLightPulse {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 40% 40%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }
 /* BG END */
