@@ -82,7 +82,7 @@ function displayResult(data) {
     mainBackBtn.dataset.pageValue === "page-search"
       ? "page-recipe-detail"
       : "page-fav-recipe-detail";
-  html = `<div class="large-6 medium-12 small-12 cell text-left result-item has-page" data-nav-dest="${navDest}" data-cocktail-id="${data.idDrink}">
+  let html = `<div class="large-6 medium-12 small-12 cell text-left result-item has-page" data-nav-dest="${navDest}" data-cocktail-id="${data.idDrink}">
         <div class="has-page" data-nav-dest="${navDest}">
             <h4 class="has-page" data-nav-dest="${navDest}" data-cocktail-id="${data.idDrink}">${data.strDrink}</h4>
         </div>
