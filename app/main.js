@@ -144,7 +144,9 @@ function displayRecipe(data, ingredient, fav) {
 }
 
 function getRecipe(data) {
-  data.drinks.forEach(displayResult);
+  data.drinks.forEach((e) => {
+    displayResult(e);
+  });
 }
 function resToJs(res) {
   return res.json();
@@ -294,15 +296,11 @@ async function supaSignIn(e) {
     password: `${passwdInput.value}`,
   });
   if (session) {
-    console.log("success");
     document.querySelector(`#page-login`).classList.add("hide");
     document.querySelector(`#menu-icon`).classList.remove("hide");
-    console.log(user);
-    console.log(session);
   }
   if (error) {
     console.log("error");
-    console.log(error.message);
   }
 }
 async function supaSignUp(e) {
@@ -316,7 +314,6 @@ async function supaSignUp(e) {
 
 async function sessionCheck() {
   const user = supabase.auth.user();
-  console.log(user);
 }
 sessionCheck();
 
