@@ -433,3 +433,47 @@ nav#main-nav #nav-back-container {
   margin-top: 0;
 }
 /* SEARCH END */
+
+/* BG START */
+#bg-img {
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+#bg-img .bg-container {
+  position: relative;
+  min-height: 600px;
+  height: calc(100vh - 120px);
+  width: calc(100vw - 100px);
+  background: linear-gradient(140deg, #24221f 5%, #0a0d18 61%);
+  z-index: -3;
+}
+#bg-img .bg-img-container {
+  display: block;
+  position: absolute;
+}
+.moon {
+  min-width: 300px;
+  width: 35vw;
+  max-width: 500px;
+  top: -2%;
+  left: -3%;
+  z-index: -1;
+}
+.bg-left {
+  min-width: 500px;
+  width: 45vw;
+  left: -15%;
+  bottom: -5.5%;
+  z-index: -2;
+}
+.bg-right {
+  min-width: 500px;
+  width: 45vw;
+  bottom: -4.5%;
+  right: -15%;
+  z-index: -2;
+}
+/* BG END */
