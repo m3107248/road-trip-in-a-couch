@@ -125,13 +125,13 @@ button::after {
   margin-left: 8px;
 }
 button:hover {
-  color: #111428;
+  /* color: #111428; */
   letter-spacing: 2.5px;
   transition: 0.2s ease;
 }
 button:hover::after {
-  border-top: solid 1px #111428;
-  border-right: solid 1px #111428;
+  /* border-top: solid 1px #111428;
+  border-right: solid 1px #111428; */
   margin-left: 10px;
   transition: 0.2s ease;
 }
@@ -139,7 +139,7 @@ a {
   text-decoration: underline;
 }
 a:hover {
-  color: #111428;
+  /* color: #111428; */
   text-decoration: none;
   transition: 0.2s ease;
 }
@@ -236,13 +236,13 @@ nav ul.nav-ul {
 #nav-back-btn:hover,
 .nav-item:hover,
 #nav-fav-btn:hover {
-  color: #111428;
+  /* color: #111428; */
   letter-spacing: 2.5px;
   transition: 0.2s ease;
 }
 #nav-back-btn:hover::before {
-  border-bottom: solid 1px #111428;
-  border-left: solid 1px #111428;
+  /* border-bottom: solid 1px #111428;
+  border-left: solid 1px #111428; */
   margin-right: 10px;
   transition: 0.2s ease;
 }
@@ -431,6 +431,20 @@ nav#main-nav #nav-back-container {
 }
 .drinkware {
   margin-top: 0;
+}
+#fav-cocktail-note {
+  background: rgba(95, 97, 130, 0.05);
+  border: solid 1px rgba(95, 97, 130, 0.2);
+  border-radius: 5px;
+  color: #5f6182;
+  font-size: 1.3rem;
+  line-height: 2rem;
+  letter-spacing: 1.3px;
+}
+#fav-cocktail-note:focus {
+  box-shadow: none;
+  border: solid 1px rgba(95, 97, 130, 0.3);
+  transition: 0.2s ease;
 }
 /* SEARCH END */
 

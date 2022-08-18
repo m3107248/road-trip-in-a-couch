@@ -74,6 +74,7 @@ function getIngredient(data) {
 }
 
 function clearResultDisplay() {
+  document.querySelector("#fav-list-container").innerHTML = "";
   displaySec.innerHTML = "";
 }
 
@@ -171,9 +172,25 @@ function apiCall(e) {
   par += searchInput.value.replace(/ /g, "_").toLowerCase();
   const endpoint = baseUrl + path + par;
   clearResultDisplay();
-  fetch(endpoint).then(resToJs).then(getRecipe);
+  fetch(endpoint).then(resToJs).then(getRecipe).catch(handleErr);
   mainBackBtn.dataset.pageValue = "page-search";
   navForward(e);
+}
+function handleErr(err) {
+  let navDest =
+    mainBackBtn.dataset.pageValue === "page-search"
+      ? "page-recipe-detail"
+      : "page-fav-recipe-detail";
+  let html = `<div class="large-12 medium-12 small-12 cell text-right">
+      <div class="has-page" data-nav-dest="">
+          <h4 class="">No matching result found.</h4>
+      </div>
+  </div>`;
+  if (mainBackBtn.dataset.pageValue === "page-search") {
+    displaySec.innerHTML += html;
+  } else {
+    document.querySelector("#fav-list-container").innerHTML += html;
+  }
 }
 function apiCallRecpieById(e) {
   const ingredient = getIngredient(e);
@@ -200,7 +217,7 @@ function listCocktail(e) {
 function getRecipeById(cid) {
   const endpoint =
     "https://thecocktaildb.com/api/json/v1/1/lookup.php?i=" + cid;
-  clearResultDisplay();
+  /*   clearResultDisplay(); */
   fetch(endpoint).then(resToJs).then(favListDisplay);
 }
 function favListDisplay(data) {
@@ -314,6 +331,21 @@ async function supaSignUp(e) {
 
 async function sessionCheck() {
   const user = supabase.auth.user();
+  if (user.aud === "authenticated") {
+    document.querySelector(`#page-login`).classList.contains("hide")
+      ? true
+      : document.querySelector(`#page-login`).classList.add("hide");
+    document.querySelector(`#menu-icon`).classList.contains("hide")
+      ? document.querySelector(`#menu-icon`).classList.remove("hide")
+      : false;
+  } else {
+    document.querySelector(`#page-login`).classList.contains("hide")
+      ? document.querySelector(`#page-login`).classList.remove("hide")
+      : false;
+    document.querySelector(`#menu-icon`).classList.contains("hide")
+      ? true
+      : document.querySelector(`#menu-icon`).classList.add("hide");
+  }
 }
 sessionCheck();
 
@@ -362,6 +394,7 @@ function navForward(event) {
       document.querySelector(`#${breadcrumbs[dest - 1]}`).classList.add("hide");
     }
     if (event.target.dataset.navDest === "page-favorite") {
+      clearResultDisplay();
       myFav(event);
     }
   }
@@ -401,82 +434,6 @@ function navBackward(event) {
   } else breadcrumbs = [];
   //console.log(breadcrumbs);
 }
-
-/* function navForward(event) {
-  if (event !== null && event !== undefined) {
-    event.preventDefault();
-  }
-  mainBackBtn.dataset.prevNavLevel = mainBackBtn.dataset.currentNavLevel;
-  mainBackBtn.dataset.currentNavLevel =
-    parseInt(mainBackBtn.dataset.currentNavLevel) + 1;
-  const current = mainBackBtn.dataset.currentNavLevel;
-  const prev = mainBackBtn.dataset.prevNavLevel;
-  console.log(current);
-
-  document.querySelectorAll(`.nav-level-${prev}`).forEach((e) => {
-    e.classList.contains("hide") ? true : e.classList.add("hide");
-  });
-  if (current > 0) {
-    mainBackBtn.classList.remove("hide");
-  }
-  if (
-    event !== null &&
-    event !== undefined &&
-    event.target.classList.contains("has-page")
-  ) {
-    document
-      .querySelector(`#${event.target.dataset.navValue}`)
-      .classList.remove("hide");
-    if (event.target.dataset.navValue === "page-favorite") {
-      myFav(event);
-    }
-  } else {
-    document.querySelectorAll(`.nav-level-${current}`).forEach((e) => {
-      e.classList.contains("hide") ? e.classList.remove("hide") : false;
-    });
-  }
-} */
-/* function navBackward(event) {
-  event.preventDefault();
-  mainBackBtn.dataset.currentNavLevel =
-    parseInt(mainBackBtn.dataset.currentNavLevel) - 1;
-  const current = mainBackBtn.dataset.currentNavLevel;
-  if (parseInt(current) - 1 >= 0) {
-    mainBackBtn.dataset.prevNavLevel =
-      parseInt(mainBackBtn.dataset.currentNavLevel) - 1;
-  } else mainBackBtn.dataset.prevNavLevel = "0";
-  const prev = mainBackBtn.dataset.prevNavLevel;
-  console.log(current);
-
-  document
-    .querySelectorAll(`.nav-level-${parseInt(current) + 1}`)
-    .forEach((e) => {
-      e.classList.contains("hide") ? true : e.classList.add("hide");
-    });
-  if (current <= 0) {
-    mainBackBtn.classList.add("hide");
-  }
-  if (mainBackBtn.dataset.pageRecipe !== "") {
-    document.querySelectorAll(`.nav-level-${current}`).forEach((e) => {
-      e.classList.contains("hide") ? e.classList.remove("hide") : false;
-    });
-    favBtn.classList.contains("hide") ? true : favBtn.classList.add("hide");
-    favBtn.dataset.recipeId = "";
-    mainBackBtn.dataset.pageRecipe = "";
-  } else if (
-    mainBackBtn.dataset.pageValue !== "" &&
-    mainBackBtn.dataset.pageRecipe === ""
-  ) {
-    document
-      .querySelector(`#${mainBackBtn.dataset.pageValue}`)
-      .classList.remove("hide");
-    mainBackBtn.dataset.pageValue = "";
-  } else {
-    document.querySelectorAll(`.nav-level-${current}`).forEach((e) => {
-      e.classList.contains("hide") ? e.classList.remove("hide") : false;
-    });
-  }
-} */
 
 mainNavBtn.addEventListener("click", navForward);
 mainBackBtn.addEventListener("click", navBackward);
